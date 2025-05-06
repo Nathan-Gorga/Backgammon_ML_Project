@@ -4,7 +4,8 @@ from game.board.board import Board
 class TestCanMove(unittest.TestCase):
     def setUp(self):
         self.board = Board()
-        self.board.jail = 0
+        self.board.whiteJail = 0
+        self.board.blackJailJail = 0
         self.board.turn = "white"
 
     def test_valid_move_to_empty(self):
@@ -25,7 +26,8 @@ class TestCanMove(unittest.TestCase):
         self.assertTrue(self.board.canMove(0, 3, 1))  # allowed
 
     def test_cannot_move_if_token_in_jail(self):
-        self.board.jail = 1  # token in jail
+        self.board.whiteJail = 1  # white token in jail
+        self.board.blackJail = 0  # black token not in jail
         self.assertFalse(self.board.canMove(0, 3, 1))  # move forbidden
 
     def test_move_to_reserve_denied_if_not_all_in_camp(self):

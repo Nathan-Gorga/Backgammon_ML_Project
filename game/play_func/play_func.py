@@ -70,7 +70,9 @@ def playTurn(board,colorPlayer):
             
             break
         
-        #move   
+        #move
+        
+           
     
     
     #consequence

@@ -22,7 +22,8 @@ class Board:
         self.board = STARTING_POSITION
         self.blackReserve = 0
         self.whiteReserve = 0
-        self.jail = 0
+        self.blackJail = 0
+        self.whiteJail = 0
         self.turn = startTurn()
         
     def printBoardInCLI(self):
@@ -30,7 +31,7 @@ class Board:
               
               it is {self.turn}'s turn to play
               
-              jail : {self.jail}
+              black jail / white jail : {self.blackJail}/{self.whiteJail}
               
               black reserve : {self.blackReserve}/{self.size}
               white reserve : {self.whiteReserve}/{self.size}""")
@@ -58,11 +59,20 @@ class Board:
         return abs(total) == NUM_TOKENS
         
     
+    def areYouInJail(self, colorIndex):
+        
+        if colorIndex == 1: # white
+            return not self.whiteJail == 0 
+        else: #black
+            return not self.blackJail == 0   
         
     def canMove(self,boardIndex, moveNumber, colorIndex):
+        
         inReserve = False
-        #is someone in jail? (should not encouter this later as a function will handle it, just for now)
-        if not self.jail == 0:
+        
+        
+        #is one of your guys in jail? (should not encouter this later as a function will handle it, just for now)
+        if self.areYouInJail(colorIndex):
             print("ERROR : ONE OF YOUR TOKENS IS IN JAIL, YOU HAVE TO PLACE IT FIRST")
             return False
         
@@ -93,7 +103,19 @@ class Board:
             
         #else True
         return True
-
+    
+    def move(self,boardIndex,moveNumber, colorIndex):
+        
+        
+        toAdd = colorIndex*-1 # to decrement the absolute value of the token
+        
+        
+        
+        #is it crush: yes
+        
+        
+        
+        #is it crush : no
 
 
 
