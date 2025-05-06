@@ -9,6 +9,9 @@ STARTING_POSITION = [2,0,0,0,0,-5, # first pannel
                      5,0,0,0,0,-2] # fourth pannel
 
 
+FIRST_HALF_INDEX = [12,11,10,9,8,7,6,5,4,3,2,1]
+SECOND_HALF_INDEX = [13,14,15,16,17,18,19,20,21,22,23,24]
+
 class Board:
     def __init__(self):
         self.size = BOARDSIZE
@@ -21,7 +24,7 @@ class Board:
     def printBoardInCLI(self):
         print(f"""
               
-              it is {self.turn} to play
+              it is {self.turn}'s turn to play
               
               jail : {self.jail}
               
@@ -35,8 +38,9 @@ class Board:
         
         print(f"""
               BOARD :
-              
+              {SECOND_HALF_INDEX}
               {secondHalf}
               {firstHalf}
+              {FIRST_HALF_INDEX}
               """)
         
