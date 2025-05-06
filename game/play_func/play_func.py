@@ -1,4 +1,4 @@
-from ..dice.dice import dice, isDouble
+from game.dice.dice import dice, isDouble
 
 
 def startTurn():
@@ -42,8 +42,9 @@ def playTurn(board,colorPlayer):
     if isDouble(roll1,roll2):
         numMoves = 4
         print("double")
+   
+
     #select token
-    
     for moves in range(numMoves):
         print(f"move {moves+1}")
         while True: 
