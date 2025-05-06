@@ -48,7 +48,19 @@ class Board:
               {firstHalf}
               {FIRST_HALF_INDEX}
               """)
+    
+    
+    def indexHitsInReserve(self, index):
         
+        if index < 0:
+            return True
+        
+        if index >= BOARDSIZE:
+            return True
+
+        return False
+               
+
         
     def canGoInReserve(self):
         
@@ -65,10 +77,21 @@ class Board:
             return not self.whiteJail == 0 
         else: #black
             return not self.blackJail == 0   
+                
+        
+    def isItCrush(self, index, colorIndex):
+        whereTokenIsGoing = self.board[index]
+
+        if colorIndex > 0:  #white
+            return whereTokenIsGoing == -1
+        else:  # black
+            return whereTokenIsGoing == 1
+        
+        
         
     def canMove(self,boardIndex, moveNumber, colorIndex):
         
-        inReserve = False
+
         
         
         #is one of your guys in jail? (should not encouter this later as a function will handle it, just for now)
@@ -80,42 +103,57 @@ class Board:
         moveAmount = moveNumber*colorIndex
         newIndex = boardIndex + moveAmount
         
-        if newIndex >= 0:
-            try:
-                token = self.board[newIndex]
-                if not (isPlayerColor(token,colorIndex) or abs(token) < 2):
-                    print("ERROR : YOU CANNOT GO THERE, YOUR OPPONENT OCCUPIES THIS SPOT")
-                    
-                    return False
-            except IndexError:
-                inReserve = True
-            
-        else:
-            inReserve = True
+        if not self.indexHitsInReserve(newIndex):
         
-        #are you trying to get in the reserve and not everyone is here?
-        if inReserve:
+            token = self.board[newIndex]
+            if not (isPlayerColor(token,colorIndex) or abs(token) < 2):
+                print("ERROR : YOU CANNOT GO THERE, YOUR OPPONENT OCCUPIES THIS SPOT")
+                
+                return False
+        
+        else:
+            #are you trying to get in the reserve and not everyone is here?
             reserveFull = self.canGoInReserve()
             if not reserveFull: # yes I know... for clarity with the return below
                 print("ERROR : YOU CANNOT MOVE TO RESERVE, NOT ALL OF YOUR TOKENS ARE IN YOUR CAMP")
                 return False
-
             
         #else True
         return True
     
-    def move(self,boardIndex,moveNumber, colorIndex):
+    def move(self, boardIndex, moveNumber, colorIndex):        
+        moveAmount = moveNumber * colorIndex
+        newIndex = boardIndex + moveAmount
+
+        # Enlève le pion de sa case d'origine
+        self.board[boardIndex] -= colorIndex
+
+        # Est-ce que le mouvement mène à la réserve ?
+        if self.indexHitsInReserve(newIndex):
+            if colorIndex > 0:
+                self.whiteReserve += 1
+                print(f"A WHITE TOKEN HAS ENTERED THE RESERVE | WHITE RESERVE : {self.whiteReserve}/{NUM_TOKENS}")
+            else:
+                self.blackReserve += 1
+                print(f"A BLACK TOKEN HAS ENTERED THE RESERVE | BLACK RESERVE : {self.blackReserve}/{NUM_TOKENS}")
+            return
+
+        # Vérifie s'il y a crush
+        crush = self.isItCrush(newIndex, colorIndex)
         
-        
-        toAdd = colorIndex*-1 # to decrement the absolute value of the token
-        
-        
-        
-        #is it crush: yes
-        
-        
-        
-        #is it crush : no
+
+        if crush:
+            # Ajoute en prison le pion écrasé
+            if colorIndex == 1:
+                self.blackJail += 1
+            elif colorIndex == -1:
+                self.whiteJail += 1
+                print(f"this is white jail {self.whiteJail} with colorIndex {colorIndex}")
+
+            self.board[newIndex] = 0  # On écrase le pion ennemi
+        # Sinon, ne pas écraser ! Juste ajouter le nouveau pion.
+        # Ajoute le pion du joueur à la case
+        self.board[newIndex] += colorIndex
 
 
 

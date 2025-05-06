@@ -45,7 +45,10 @@ def playTurn(board,colorPlayer):
         print("double")
    
 
-    #select token
+    #TODO are you in jail?
+
+
+    # select token
     for move in range(numMoves):
         
         print(f"move {move+1}")
@@ -54,7 +57,8 @@ def playTurn(board,colorPlayer):
             
             boardIndex = int(input("which token are you moving? : ")) - 1
             token = board.board[boardIndex]
-            
+            diceRollThisMove = rolls[move]
+                
             #is there a token?
             if isFileEmpty(token):
                 print("ERROR : THERE ARE NO TOKENS ON THIS FILE")
@@ -64,18 +68,18 @@ def playTurn(board,colorPlayer):
                 print("ERROR : THE SELECTED TOKEN IS NOT OF YOUR COLOR")
                 continue
             
-            #can your token move their
-            if not board.canMove(boardIndex,rolls[move],moveDirection):
+            #can your token move there
+            if not board.canMove(boardIndex,diceRollThisMove,moveDirection):
                 continue
             
             break
         
         #move
-        
+        board.move(boardIndex,diceRollThisMove,moveDirection)
            
     
     
-    #consequence
+        #TODO consequence
     
-    #change turn
+    #TODO change turn
     
