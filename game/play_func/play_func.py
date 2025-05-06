@@ -26,7 +26,10 @@ def rollDice():
     print(f"you rolled {roll1} and {roll2}")
     return [roll1,roll2]
 
-    
+def changeTurn(colorPlayer):
+    return "white" if colorPlayer == "black" else "black"
+
+
 def playTurn(board,colorPlayer):
     numMoves = 2
     
@@ -69,17 +72,16 @@ def playTurn(board,colorPlayer):
                 continue
             
             #can your token move there
-            if not board.canMove(boardIndex,diceRollThisMove,moveDirection):
+            if not board.canMove(boardIndex,diceRollThisMove,moveDirection): # unit tested : OK
                 continue
             
             break
         
         #move
-        board.move(boardIndex,diceRollThisMove,moveDirection)
-           
+        board.move(boardIndex,diceRollThisMove,moveDirection) # unit tested : OK
     
+        
     
-        #TODO consequence
-    
-    #TODO change turn
+    # change turn
+    board.turn = changeTurn(colorPlayer)
     
