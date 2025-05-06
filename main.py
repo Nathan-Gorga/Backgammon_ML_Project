@@ -1,4 +1,4 @@
-from game.dice.dice import dice
+
 from game.board.board import Board
 
 

@@ -1,3 +1,6 @@
+from ..play_func.play_func import startTurn
+
+
 BOARDSIZE = 24
 # 0 : empty, 0 < : white, 0 > : black
 STARTING_POSITION = [2,0,0,0,0,-5, # first pannel
@@ -13,9 +16,13 @@ class Board:
         self.blackReserve = 0
         self.whiteReserve = 0
         self.jail = 0
+        self.turn = startTurn()
         
     def printBoardInCLI(self):
         print(f"""
+              
+              it is {self.turn} to play
+              
               jail : {self.jail}
               
               black reserve : {self.blackReserve}/{self.size}
