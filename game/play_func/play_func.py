@@ -41,27 +41,37 @@ def playTurn(board,colorPlayer):
    
     if isDouble(roll1,roll2):
         numMoves = 4
+        rolls.append(roll1,roll2)
         print("double")
    
 
     #select token
-    for moves in range(numMoves):
-        print(f"move {moves+1}")
+    for move in range(numMoves):
+        
+        print(f"move {move+1}")
+        
         while True: 
+            
             boardIndex = int(input("which token are you moving? : ")) - 1
             token = board.board[boardIndex]
+            
+            #is there a token?
             if isFileEmpty(token):
                 print("ERROR : THERE ARE NO TOKENS ON THIS FILE")
                 continue
+            #is the selected token of your color?
             if not isPlayerColor(token,moveDirection):
                 print("ERROR : THE SELECTED TOKEN IS NOT OF YOUR COLOR")
                 continue
+            
+            #can your token move their
+            if not board.canMove(boardIndex,rolls[move],moveDirection):
+                continue
+            
             break
         
+        #move   
     
-    #can move?
-    
-    #move
     
     #consequence
     
