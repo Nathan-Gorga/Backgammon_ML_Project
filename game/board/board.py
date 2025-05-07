@@ -1,4 +1,4 @@
-from game.play_func.play_func import startTurn, isPlayerColor
+from game.play_func.play_func import startTurn, isPlayerColor, isFileEmpty
 
 
 BOARDSIZE = 24
@@ -87,8 +87,24 @@ class Board:
         else:  # black
             return whereTokenIsGoing == 1
         
+    def crush(self,destination, colorPlayer): #
         
         
+        if colorPlayer == 1: #white
+            self.blackJail += 1    
+        else: #black
+            self.whiteJail += 1
+        
+        self.board[destination] = 0 
+        self.board[destination] += colorPlayer 
+    
+    
+    def isItFriendlyFile(self,destination, colorPlayer): 
+        
+        return isFileEmpty(self.board[destination - 1]) or isPlayerColor(self.board[destination-1],colorPlayer) 
+    
+    
+    
     def canMove(self,boardIndex, moveNumber, colorIndex):
         
 
@@ -138,23 +154,67 @@ class Board:
                 print(f"A BLACK TOKEN HAS ENTERED THE RESERVE | BLACK RESERVE : {self.blackReserve}/{NUM_TOKENS}")
             return
 
-        # Vérifie s'il y a crush
-        crush = self.isItCrush(newIndex, colorIndex)
         
+        crush = self.isItCrush(newIndex, colorIndex)       
 
         if crush:
-            # Ajoute en prison le pion écrasé
-            if colorIndex == 1:
-                self.blackJail += 1
-            elif colorIndex == -1:
-                self.whiteJail += 1
-                print(f"this is white jail {self.whiteJail} with colorIndex {colorIndex}")
+            self.crush(newIndex,colorIndex)  
+        else:
+            self.board[newIndex] += colorIndex
 
-            self.board[newIndex] = 0  # On écrase le pion ennemi
-        # Sinon, ne pas écraser ! Juste ajouter le nouveau pion.
-        # Ajoute le pion du joueur à la case
-        self.board[newIndex] += colorIndex
-
-
+    def canGetOutOfJail(self,colorPlayer,roll1,roll2): # returns dice used if got out of jail, else returns False
+        
+        file1 = file2 = None
+        boundMax = boundMin = 0
+        if colorPlayer == 1: #white
+           
+            boundMax = 6
+            boundMin = 1
+           
+            file1 = self.isItFriendlyFile(roll1-1,1) or self.isItCrush(roll1-1, 1)
+            file2 = self.isItFriendlyFile(roll2-1,1) or self.isItCrush(roll2-1, 1)
+            
+        else: #black
+            
+            boundMax = 24
+            boundMin = 19
+            
+            file1 = self.isItFriendlyFile(BOARDSIZE-roll1,-1) or self.isItCrush(BOARDSIZE - roll1, -1)
+            file2 = self.isItFriendlyFile(BOARDSIZE-roll2,-1) or self.isItCrush(BOARDSIZE - roll2, -1)
+        
+        print(f"File {roll1} is {"empty" if file1 else "blocked"} and File {roll2} is {"empty" if file2 else "blocked"}")
+        
+        if file1 or file2:
+        
+            while True:               
+                choice = input("which do you choose? : ")
+        
+                if isFileEmpty(self.board[choice-1]) and choice >= boundMin and choice <= boundMax:
+                    break
+        
+                else:
+                    print("ERROR : THIS FILE IS NOT EMPTY")
+        
+            return choice
+        
+        print("YOU ARE UNABLE TO GET OUT OF JAIL")
+        return False
+        
+           
+    def moveOutOfJail(self,choice,colorPlayer):
+        
+        #is it crush?
+        isItCrush = self.isItCrush(choice,colorPlayer)
+        if isItCrush:
+            self.crush(choice-1,colorPlayer)        
+        else: #add to file
+            self.board[choice-1] += colorPlayer
+        
+        
+           
+    def isItWin(self):
+        return self.whiteReserve == NUM_TOKENS or self.blackReserve ==  NUM_TOKENS
+            
+            
 
     

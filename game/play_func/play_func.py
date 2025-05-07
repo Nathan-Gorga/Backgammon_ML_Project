@@ -30,7 +30,10 @@ def changeTurn(colorPlayer):
     return "white" if colorPlayer == "black" else "black"
 
 
-def playTurn(board,colorPlayer):
+
+
+
+def playTurn(board,colorPlayer): #true if win, false if no win
     numMoves = 2
     
     #what is the color of the player
@@ -48,40 +51,56 @@ def playTurn(board,colorPlayer):
         print("double")
    
 
-    #TODO are you in jail?
-
+        
 
     # select token
     for move in range(numMoves):
         
         print(f"move {move+1}")
         
+        isInJail = board.areYouInJail(moveDirection)
         while True: 
             
-            boardIndex = int(input("which token are you moving? : ")) - 1
-            token = board.board[boardIndex]
-            diceRollThisMove = rolls[move]
+            # are you in jail?
+            if isInJail:
+                canGetOut = board.canGetOutOfJail(moveDirection, roll1, roll2)
                 
-            #is there a token?
-            if isFileEmpty(token):
-                print("ERROR : THERE ARE NO TOKENS ON THIS FILE")
-                continue
-            #is the selected token of your color?
-            if not isPlayerColor(token,moveDirection):
-                print("ERROR : THE SELECTED TOKEN IS NOT OF YOUR COLOR")
-                continue
-            
-            #can your token move there
-            if not board.canMove(boardIndex,diceRollThisMove,moveDirection): # unit tested : OK
-                continue
-            
-            break
+                if canGetOut:
+                    board.moveOutOfJail(canGetOut,moveDirection)
+                
+                
+            else:  # not in jail
+                
+                boardIndex = int(input("which token are you moving? : ")) - 1
+                token = board.board[boardIndex]
+                diceRollThisMove = rolls[move]#TODO change so that you can choose to move the same token by roll1 or roll2 distance
+                    
+                #is there a token?
+                if isFileEmpty(token):
+                    print("ERROR : THERE ARE NO TOKENS ON THIS FILE")
+                    continue
+                #is the selected token of your color?
+                if not isPlayerColor(token,moveDirection):
+                    print("ERROR : THE SELECTED TOKEN IS NOT OF YOUR COLOR")
+                    continue
+                
+                #can your token move there
+                if not board.canMove(boardIndex,diceRollThisMove,moveDirection): # unit tested : OK
+                    continue
+                
+                #move
+                board.move(boardIndex,diceRollThisMove,moveDirection) # unit tested : OK
+                
+                
+                break
         
-        #move
-        board.move(boardIndex,diceRollThisMove,moveDirection) # unit tested : OK
     
+        win = board.isItWin()
+        if win:
+            print(f"{colorPlayer} has won!")
+            return True
         
     
     # change turn
     board.turn = changeTurn(colorPlayer)
-    
+    return False

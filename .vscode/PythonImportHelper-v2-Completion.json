@@ -1,0 +1,253 @@
+[
+    {
+        "label": "startTurn",
+        "importPath": "game.play_func.play_func",
+        "description": "game.play_func.play_func",
+        "isExtraImport": true,
+        "detail": "game.play_func.play_func",
+        "documentation": {}
+    },
+    {
+        "label": "isPlayerColor",
+        "importPath": "game.play_func.play_func",
+        "description": "game.play_func.play_func",
+        "isExtraImport": true,
+        "detail": "game.play_func.play_func",
+        "documentation": {}
+    },
+    {
+        "label": "isFileEmpty",
+        "importPath": "game.play_func.play_func",
+        "description": "game.play_func.play_func",
+        "isExtraImport": true,
+        "detail": "game.play_func.play_func",
+        "documentation": {}
+    },
+    {
+        "label": "playTurn",
+        "importPath": "game.play_func.play_func",
+        "description": "game.play_func.play_func",
+        "isExtraImport": true,
+        "detail": "game.play_func.play_func",
+        "documentation": {}
+    },
+    {
+        "label": "unittest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "unittest",
+        "description": "unittest",
+        "detail": "unittest",
+        "documentation": {}
+    },
+    {
+        "label": "Board",
+        "importPath": "game.board.board",
+        "description": "game.board.board",
+        "isExtraImport": true,
+        "detail": "game.board.board",
+        "documentation": {}
+    },
+    {
+        "label": "Board",
+        "importPath": "game.board.board",
+        "description": "game.board.board",
+        "isExtraImport": true,
+        "detail": "game.board.board",
+        "documentation": {}
+    },
+    {
+        "label": "Board",
+        "importPath": "game.board.board",
+        "description": "game.board.board",
+        "isExtraImport": true,
+        "detail": "game.board.board",
+        "documentation": {}
+    },
+    {
+        "label": "Board",
+        "importPath": "game.board.board",
+        "description": "game.board.board",
+        "isExtraImport": true,
+        "detail": "game.board.board",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "dice",
+        "importPath": "game.dice.dice",
+        "description": "game.dice.dice",
+        "isExtraImport": true,
+        "detail": "game.dice.dice",
+        "documentation": {}
+    },
+    {
+        "label": "isDouble",
+        "importPath": "game.dice.dice",
+        "description": "game.dice.dice",
+        "isExtraImport": true,
+        "detail": "game.dice.dice",
+        "documentation": {}
+    },
+    {
+        "label": "Board",
+        "kind": 6,
+        "importPath": "game.board.board",
+        "description": "game.board.board",
+        "peekOfCode": "class Board:\n    def __init__(self):\n        self.size = BOARDSIZE\n        self.board = STARTING_POSITION\n        self.blackReserve = 0\n        self.whiteReserve = 0\n        self.blackJail = 0\n        self.whiteJail = 0\n        self.turn = startTurn()\n    def printBoardInCLI(self):",
+        "detail": "game.board.board",
+        "documentation": {}
+    },
+    {
+        "label": "BOARDSIZE",
+        "kind": 5,
+        "importPath": "game.board.board",
+        "description": "game.board.board",
+        "peekOfCode": "BOARDSIZE = 24\nNUM_TOKENS = 15\n# 0 : empty, 0 < : white, 0 > : black\nSTARTING_POSITION = [2,0,0,0,0,-5, # first pannel\n                     0,-3,0,0,0,5, # second pannel\n                     -5,0,0,0,3,0, # third pannel\n                     5,0,0,0,0,-2] # fourth pannel\nFIRST_HALF_INDEX = [12,11,10,9,8,7,6,5,4,3,2,1]\nSECOND_HALF_INDEX = [13,14,15,16,17,18,19,20,21,22,23,24]\nclass Board:",
+        "detail": "game.board.board",
+        "documentation": {}
+    },
+    {
+        "label": "NUM_TOKENS",
+        "kind": 5,
+        "importPath": "game.board.board",
+        "description": "game.board.board",
+        "peekOfCode": "NUM_TOKENS = 15\n# 0 : empty, 0 < : white, 0 > : black\nSTARTING_POSITION = [2,0,0,0,0,-5, # first pannel\n                     0,-3,0,0,0,5, # second pannel\n                     -5,0,0,0,3,0, # third pannel\n                     5,0,0,0,0,-2] # fourth pannel\nFIRST_HALF_INDEX = [12,11,10,9,8,7,6,5,4,3,2,1]\nSECOND_HALF_INDEX = [13,14,15,16,17,18,19,20,21,22,23,24]\nclass Board:\n    def __init__(self):",
+        "detail": "game.board.board",
+        "documentation": {}
+    },
+    {
+        "label": "STARTING_POSITION",
+        "kind": 5,
+        "importPath": "game.board.board",
+        "description": "game.board.board",
+        "peekOfCode": "STARTING_POSITION = [2,0,0,0,0,-5, # first pannel\n                     0,-3,0,0,0,5, # second pannel\n                     -5,0,0,0,3,0, # third pannel\n                     5,0,0,0,0,-2] # fourth pannel\nFIRST_HALF_INDEX = [12,11,10,9,8,7,6,5,4,3,2,1]\nSECOND_HALF_INDEX = [13,14,15,16,17,18,19,20,21,22,23,24]\nclass Board:\n    def __init__(self):\n        self.size = BOARDSIZE\n        self.board = STARTING_POSITION",
+        "detail": "game.board.board",
+        "documentation": {}
+    },
+    {
+        "label": "FIRST_HALF_INDEX",
+        "kind": 5,
+        "importPath": "game.board.board",
+        "description": "game.board.board",
+        "peekOfCode": "FIRST_HALF_INDEX = [12,11,10,9,8,7,6,5,4,3,2,1]\nSECOND_HALF_INDEX = [13,14,15,16,17,18,19,20,21,22,23,24]\nclass Board:\n    def __init__(self):\n        self.size = BOARDSIZE\n        self.board = STARTING_POSITION\n        self.blackReserve = 0\n        self.whiteReserve = 0\n        self.blackJail = 0\n        self.whiteJail = 0",
+        "detail": "game.board.board",
+        "documentation": {}
+    },
+    {
+        "label": "SECOND_HALF_INDEX",
+        "kind": 5,
+        "importPath": "game.board.board",
+        "description": "game.board.board",
+        "peekOfCode": "SECOND_HALF_INDEX = [13,14,15,16,17,18,19,20,21,22,23,24]\nclass Board:\n    def __init__(self):\n        self.size = BOARDSIZE\n        self.board = STARTING_POSITION\n        self.blackReserve = 0\n        self.whiteReserve = 0\n        self.blackJail = 0\n        self.whiteJail = 0\n        self.turn = startTurn()",
+        "detail": "game.board.board",
+        "documentation": {}
+    },
+    {
+        "label": "TestCanMove",
+        "kind": 6,
+        "importPath": "game.board.test_board_canMove",
+        "description": "game.board.test_board_canMove",
+        "peekOfCode": "class TestCanMove(unittest.TestCase):\n    def setUp(self):\n        self.board = Board()\n        self.board.whiteJail = 0\n        self.board.blackJailJail = 0\n        self.board.turn = \"white\"\n    def test_valid_move_to_empty(self):\n        self.board.board = [0]*24\n        self.board.board[0] = 1  # white token\n        self.assertTrue(self.board.canMove(0, 3, 1))  # move first file, by 3 moves and I am white",
+        "detail": "game.board.test_board_canMove",
+        "documentation": {}
+    },
+    {
+        "label": "TestIsItCrush",
+        "kind": 6,
+        "importPath": "game.board.test_board_isItCrush",
+        "description": "game.board.test_board_isItCrush",
+        "peekOfCode": "class TestIsItCrush(unittest.TestCase):\n    def setUp(self):\n        from board.board import Board  # ajuste si le chemin est différent\n        self.board = Board()\n    def test_white_lands_on_black(self):\n        self.board.board[3] = -1  # noir\n        result = self.board.isItCrush(3, 1)  # blanc arrive\n        self.assertTrue(result)\n    def test_black_lands_on_white(self):\n        self.board.board[4] = 1  # blanc",
+        "detail": "game.board.test_board_isItCrush",
+        "documentation": {}
+    },
+    {
+        "label": "TestMoveFunction",
+        "kind": 6,
+        "importPath": "game.board.test_board_move",
+        "description": "game.board.test_board_move",
+        "peekOfCode": "class TestMoveFunction(unittest.TestCase):\n    def setUp(self):\n        self.board = Board()\n        self.board.board = [0]*24  # Empty board for clean setup\n        self.board.whiteJail = 0\n        self.board.blackJail = 0\n    def test_simple_white_move(self):\n        self.board.board[0] = 1  # 1 white token\n        self.board.move(0, 3, 1)  # Move 3 spaces\n        self.assertEqual(self.board.board[3], 1)  # Should be at index 3",
+        "detail": "game.board.test_board_move",
+        "documentation": {}
+    },
+    {
+        "label": "dice",
+        "kind": 2,
+        "importPath": "game.dice.dice",
+        "description": "game.dice.dice",
+        "peekOfCode": "def dice():\n    diceMin = 1\n    diceMax = 6\n    return random.randint(diceMin, diceMax)\ndef isDouble(roll1, roll2):\n    return roll1 == roll2",
+        "detail": "game.dice.dice",
+        "documentation": {}
+    },
+    {
+        "label": "isDouble",
+        "kind": 2,
+        "importPath": "game.dice.dice",
+        "description": "game.dice.dice",
+        "peekOfCode": "def isDouble(roll1, roll2):\n    return roll1 == roll2",
+        "detail": "game.dice.dice",
+        "documentation": {}
+    },
+    {
+        "label": "startTurn",
+        "kind": 2,
+        "importPath": "game.play_func.play_func",
+        "description": "game.play_func.play_func",
+        "peekOfCode": "def startTurn():\n    white = black = 0\n    while white == black:\n        white = dice() + dice()\n        black = dice() + dice()\n    return \"white\" if white > black else \"black\"\ndef isFileEmpty(token):\n    return True if token == 0 else False\ndef isPlayerColor(token, colorPlayer):\n    return (token > 0 and colorPlayer > 0) or (token < 0 and colorPlayer < 0)",
+        "detail": "game.play_func.play_func",
+        "documentation": {}
+    },
+    {
+        "label": "isFileEmpty",
+        "kind": 2,
+        "importPath": "game.play_func.play_func",
+        "description": "game.play_func.play_func",
+        "peekOfCode": "def isFileEmpty(token):\n    return True if token == 0 else False\ndef isPlayerColor(token, colorPlayer):\n    return (token > 0 and colorPlayer > 0) or (token < 0 and colorPlayer < 0)\ndef rollDice():\n    roll1=dice()\n    roll2=dice()\n    print(f\"you rolled {roll1} and {roll2}\")\n    return [roll1,roll2]\ndef changeTurn(colorPlayer):",
+        "detail": "game.play_func.play_func",
+        "documentation": {}
+    },
+    {
+        "label": "isPlayerColor",
+        "kind": 2,
+        "importPath": "game.play_func.play_func",
+        "description": "game.play_func.play_func",
+        "peekOfCode": "def isPlayerColor(token, colorPlayer):\n    return (token > 0 and colorPlayer > 0) or (token < 0 and colorPlayer < 0)\ndef rollDice():\n    roll1=dice()\n    roll2=dice()\n    print(f\"you rolled {roll1} and {roll2}\")\n    return [roll1,roll2]\ndef changeTurn(colorPlayer):\n    return \"white\" if colorPlayer == \"black\" else \"black\"\ndef playTurn(board,colorPlayer): #true if win, false if no win",
+        "detail": "game.play_func.play_func",
+        "documentation": {}
+    },
+    {
+        "label": "rollDice",
+        "kind": 2,
+        "importPath": "game.play_func.play_func",
+        "description": "game.play_func.play_func",
+        "peekOfCode": "def rollDice():\n    roll1=dice()\n    roll2=dice()\n    print(f\"you rolled {roll1} and {roll2}\")\n    return [roll1,roll2]\ndef changeTurn(colorPlayer):\n    return \"white\" if colorPlayer == \"black\" else \"black\"\ndef playTurn(board,colorPlayer): #true if win, false if no win\n    numMoves = 2\n    #what is the color of the player",
+        "detail": "game.play_func.play_func",
+        "documentation": {}
+    },
+    {
+        "label": "changeTurn",
+        "kind": 2,
+        "importPath": "game.play_func.play_func",
+        "description": "game.play_func.play_func",
+        "peekOfCode": "def changeTurn(colorPlayer):\n    return \"white\" if colorPlayer == \"black\" else \"black\"\ndef playTurn(board,colorPlayer): #true if win, false if no win\n    numMoves = 2\n    #what is the color of the player\n    moveDirection = 1 if colorPlayer == \"white\" else -1\n    #dice roll\n    rolls=rollDice()\n    roll1=rolls[0]\n    roll2=rolls[1]",
+        "detail": "game.play_func.play_func",
+        "documentation": {}
+    },
+    {
+        "label": "playTurn",
+        "kind": 2,
+        "importPath": "game.play_func.play_func",
+        "description": "game.play_func.play_func",
+        "peekOfCode": "def playTurn(board,colorPlayer): #true if win, false if no win\n    numMoves = 2\n    #what is the color of the player\n    moveDirection = 1 if colorPlayer == \"white\" else -1\n    #dice roll\n    rolls=rollDice()\n    roll1=rolls[0]\n    roll2=rolls[1]\n    if isDouble(roll1,roll2):\n        numMoves = 4",
+        "detail": "game.play_func.play_func",
+        "documentation": {}
+    }
+]
